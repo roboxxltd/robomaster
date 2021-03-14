@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	{
+		"type": "shell", /* 定义任务是被作为进程运⾏还是在 shell 中作为命令运⾏，默认是shell，即是在终端中运⾏，因为终端执⾏*/
+		"label": "build", /* 要与launch.json⽂件⾥的preLaunchTask的内容保持⼀致 */
+		"command": "/usr/bin/g++", /* 这⾥填写你的编译器地址 */
+		"args": [
+			/* 类似与qt的Pro⽂件⾥开始的那⼏句 */
+			"-std=c++11",// 静态链接
+			"-static-libgcc",
+			"-Wall",// 开启额外警告
+			/* 说明整个项⽬所需的头⽂件路径（.h）*/
+			"-I","${workspaceFolder}/",
+			"-I","${workspaceFolder}/armor/",
+			"-I","${workspaceFolder}/pnp/",
+			"-I","${workspaceFolder}/serial/",
+			"-I","${workspaceFolder}/camera/",
+			"-I","${workspaceFolder}/kalmantest/",
+			"-I","${workspaceFolder}/Total operation/",
+			"-I","${workspaceFolder}/detect_buff/",
+			"-I","/usr/local/include/",
+			"-I","/usr/local/include/opencv4/",
+			"-I","/usr/local/include/opencv4/opencv2/",
+
+	//		"-I","${workspaceFolder}/serial/serialib.hpp",
+			/* 说明整个项⽬所需的源⽂件路径(.cpp) */
+			"-g",
+			"${workspaceFolder}/armor/armorplate.cpp",
+			"${workspaceFolder}/pnp/solvepnp.cpp",
+			"${workspaceFolder}/kalmantest/kalmantest.cpp",
+"${workspaceFolder}/serial/serialport.cpp",
+			"${workspaceFolder}/Total operation/run.cpp",
+			"${workspaceFolder}/camera/videocapture.cpp",
+			"${workspaceFolder}/detect_buff/buff_detect.cpp",
+			"${workspaceFolder}/main.cpp",/* ${workspaceFolder}表⽰路径从当前项⽬⽂件夹开始 */
+			"-o", /* 编译输出⽂件的存放路径 */
+			"${workspaceFolder}/run.o", /* 要与launch.json⽂件⾥的program的内容保持⼀致 */
+			/* ${fileDirname} 是指 ⽂件⽬录名 相当于${workspaceFolder}*/
+			/* ${fileBasenameNoExtension}意思是指 该路径下没有扩展名的⽂件基本名称没有扩展名 */
+			/* 也可以这样："${workspaceFolder}/run.o", */
+			/* OpenCV的lib库 */
+			"/usr/local/lib/libopencv_*",
+			"/lib/libMVSDK.so",//工业相机驱动
+		],
+		"options": {
+			"cwd": "${workspaceFolder}" /* 调试程序时的⼯作⽬录，⼀般为${workspaceFolder}即代码所在⽬录 */
+		},
+		"problemMatcher": [
+			"$gcc" /* 要使⽤的问题匹配程序。 */
+		],
+		"group": "build" /* 将任务标记为可通过 "运⾏⽣成任务" 命令访问的⽣成任务。*/
+	}
+	]
+	}

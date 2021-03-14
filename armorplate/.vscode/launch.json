@@ -1,0 +1,28 @@
+{
+    // 使⽤ IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+         "name": "(gdb) Launch", /* 配置名称，将会在启动配置的下拉菜单中显⽰ */
+        "preLaunchTask": "build", /* 调试前执⾏ 'build'选项 */
+        "type": "cppdbg", /* 配置类型，这⾥只能为cppdbg */
+        "request": "launch",/**/
+        "program": "${workspaceFolder}/run.o", /*选择要调试的⽂件路径*/
+        "args": [], /* 程序调试时传递给程序的命令⾏参数，⼀般设为空即可 */
+        "stopAtEntry": false,/* 设为true时程序将暂停在程序⼊⼝处，⼀般设置为false */
+        "cwd": "${workspaceFolder}", /* 调试程序时的⼯作⽬录，⼀般为${workspaceFolder}即代码所在⽬录 */
+        "environment": [],
+        "externalConsole": true, /* 调试时是否显⽰控制台窗⼝，⼀般设置为true显⽰控制台 */
+        "MIMode": "gdb",
+        "setupCommands": [
+        {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+        }
+        ]
+        }
+        ]
+    }
